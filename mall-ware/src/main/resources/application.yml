@@ -1,0 +1,17 @@
+server:
+  port: 8050
+
+spring:
+  application:
+    name: mall-ware
+  datasource:
+    username: root
+    password: root
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.211.55.12:3306/mall-wms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
