@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import per.zqa.mall.order.entity.OrderEntity;
@@ -20,6 +22,7 @@ import per.zqa.mall.common.utils.R;
  * @email 596105081@qq.com
  * @date 2024-04-05 23:41:30
  */
+@RefreshScope
 @RestController
 @RequestMapping("order/order")
 public class OrderController {
@@ -28,10 +31,21 @@ public class OrderController {
     @Autowired
     private ProductFeignClient productFeignClient;
 
+    @Value("${user.userName}")
+    private String name;
+
+    @Value("${user.age}")
+    private int age;
+
     @GetMapping("/products")
     public R queryProducts() {
         R list = productFeignClient.list(null);
         return R.ok().put("result", list);
+    }
+
+    @GetMapping("/user")
+    public R queryUser() {
+        return R.ok().put("result", name + ":" + age);
     }
 
     /**

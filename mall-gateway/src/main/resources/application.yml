@@ -1,0 +1,39 @@
+server:
+  port: 8070
+
+spring:
+  application:
+    name: mall-gateway
+
+  main:
+    web-application-type: reactive
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.211.55.12:8848
+      serverAddr: 10.211.55.12:8848
+      # ?????????
+      username: 'nacos'
+      password: 'nacos'
+    #      config:
+    #        extension-configs:
+    #          - data-id: mybatis.yaml
+    #          - group: dev
+
+    gateway:
+      routes:
+        - id: route1
+          uri: http://www.baidu.com
+          predicates:
+            - Query=url,baidu
+
+  config:
+    import:
+      - nacos:mall-order.yaml?refresh=true&group=DEFAULT_GROUP
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
