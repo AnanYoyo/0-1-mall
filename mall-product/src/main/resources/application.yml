@@ -8,7 +8,7 @@ spring:
     username: root
     password: root
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://10.211.55.12:3306/mall-pms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://10.211.55.12:3306/mall-pms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
   cloud:
     nacos:
       discovery:
