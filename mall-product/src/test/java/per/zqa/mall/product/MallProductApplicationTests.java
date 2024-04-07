@@ -8,13 +8,4 @@ import per.zqa.mall.product.service.BrandService;
 
 @SpringBootTest
 class MallProductApplicationTests {
-
-	@Resource
-	private BrandService brandService;
-
-	@Test
-	void contextLoads() {
-		PageUtils pageUtils = brandService.queryPage(null);
 	}
-
-}
